@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-8">
+        <h4>Encode Item</h4>
+        <form [formGroup]="encodeItemForm" (ngSubmit)="postItem()" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="inputItemName">Item Name</label>
+                <input type="text" formControlName="itemName" class="form-control" id="inputItemName" aria-describedby="itemName" placeholder="Enter item name">
+                <!-- <small id="itemName" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <div class="form-group">
+                <label for="textareaItemDescription">Item Description</label>
+                <textarea formControlName="itemDescription" class="form-control" placeholder="Enter item description" id="textareaItemDescription" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="inputAmount">Amount</label>
+                <input type="text" formControlName="amount" class="form-control" id="inputAmount" aria-describedby="amount" placeholder="Enter amount">
+                <!-- <small id="amount" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <div class="form-group">
+            <!-- <label for="fileImage">Choose an image</label> -->
+            <input type="file" class="form-control-file" id="fileImage" (change)="onFileSelect($event)">
+            
+            <!-- <small id="image" class="form-text text-muted">Choose an image and it will resize and convert.</small> -->
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>    
+    </div>
+</div>

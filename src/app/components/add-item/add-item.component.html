@@ -1,0 +1,66 @@
+
+<form [formGroup]="contactForm" (ngSubmit)="selectItem()"  class="form-inline">
+
+  <div class="input-group mb-3">
+    <select formControlName="selectValue" class="custom-select" id="inputGroupSelect04">
+      <option [ngValue]="null" disabled>Select an Item</option>
+      <option *ngFor="let getAllItem of getAllItemToCart" 
+      [ngValue]="getAllItem">
+      {{getAllItem.itemName}}</option>
+    </select>
+    <div class="input-group-append">
+      <!-- <button class="btn btn-outline-secondary" type="submit">Add to cart</button> -->
+      <button (click)="addToCart()" class="btn btn-outline-secondary" type="button">Add to cart</button>
+    </div>
+  </div>
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Qty</th>
+        <th scope="col">Total</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="items">
+      <tr *ngFor="let item of contactForm.controls.items['controls']; let i = index;" [formGroupName]="i" id="trId{{i}}">
+        <th class="align-middle">{{i}}</th>
+        <td>
+          <input type="text" class="form-control" formControlName="itemName" readonly>
+        </td>
+        <td>
+          <input type="text" id="itemPrice{{i}}" class="form-control" formControlName="itemPrice" readonly>
+        </td>
+        <td>
+          <input type="text" id="itemQty{{i}}" (change)="calculate($event, i)" class="form-control" formControlName="itemQty">
+        </td>
+        <td>
+          <input type="text" id="itemAmount{{i}}" class="form-control" formControlName="itemAmount" readonly>
+        </td>
+        <td>
+          <button class="btn-trash" (click)="removeItem(i)"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td id="totalAmount" rowspan="2" style="font-weight: bold; border-top-color: grey;"></td>
+        <td></td>
+      </tr>
+    </tbody>
+
+    <!-- <tbody *ngIf="!contactForm.value.selectValue">
+      <tr>
+        <td colspan="6">No items added...</td>
+      </tr>
+    </tbody> -->
+  </table>
+   
+</form>

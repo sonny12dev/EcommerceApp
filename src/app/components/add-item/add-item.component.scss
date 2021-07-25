@@ -1,0 +1,24 @@
+/* Style buttons */
+.btn-trash {
+    background-color: red; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 6px 8px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn-trash:hover {
+    background-color: darkred;
+  }
+
+  /***THIS IS TO HIDE THE TR FOR DISPLAYING THE INITIAL DATA***/
+  #trId0{
+    display: none;
+  }
+
+  input.form-control:read-only{
+    border: none;
+    background-color: transparent;
+  }
